@@ -1,0 +1,30 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: dotnetwebapi
+  namespace: default
+  labels:
+    app: dotnetwebapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dotnetwebapi
+  template:
+    metadata:
+      labels:
+        app: dotnetwebapi
+    spec:
+      containers:
+        - name: dotnetwebapi
+          image: dudley810/dotnetwebapi:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 443
+              protocol: TCP
+          resources:
+            limits:
+              memory: 1000Mi
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: prod
