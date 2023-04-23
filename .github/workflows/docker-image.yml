@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build and Push Image
-      run: | 
+      run: |
        echo "${{ secrets.DOCKERPW }}" | docker login -u "dudley810" --password-stdin
        docker image build -t dudley810/dotnetwebapi:latest .
        docker push dudley810/dotnetwebapi:latest
