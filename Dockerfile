@@ -1,9 +1,9 @@
-FROM nexusprod.corp.intranet:4567/voice-engineering-ucc/cca/ucc_base_images/dotnet-ss-ifx:latest AS base
+FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS base
 WORKDIR /app
 EXPOSE 80
 EXPOSE 443
 
-FROM nexusprod.corp.intranet:4567/voice-engineering-ucc/cca/ucc_base_images/sdk-dotnet:latest AS build
+FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
 COPY ["src/DotNetWebApi/DotNetWebApi.csproj", "webapi/DotNetWebApi/"]
 COPY ["src/WebApi.Models/WebApi.Models.csproj", "webapi/WebApi.Models/"]
